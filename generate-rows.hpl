@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pipeline>
   <info>
+    <pipeline_version/>
     <capture_transform_performance>Y</capture_transform_performance>
     <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
     <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
-    <pipeline_status>-1</pipeline_status>
-    <parameters/>
+    <pipeline_status>0</pipeline_status>
+    <parameters>
+      <parameter>
+        <name>NR_ROWS</name>
+        <description>Number of rows to generate</description>
+        <default_value>5m</default_value>
+      </parameter>
+    </parameters>
     <name>generate-rows</name>
     <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
     <created_user>-</created_user>
     <modified_user>-</modified_user>
     <created_date>2026/09/15 21:10:40.323</created_date>
@@ -17,12 +26,12 @@
   </info>
   <transform>
     <type>RowGenerator</type>
-    <name>100m</name>
+    <name>10m</name>
     <never_ending>N</never_ending>
     <interval_in_ms>5000</interval_in_ms>
     <row_time_field>now</row_time_field>
     <last_time_field>FiveSecondsAgo</last_time_field>
-    <limit>100m</limit>
+    <limit>${NR_ROWS}</limit>
     <fields/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -78,7 +87,7 @@
   </transform>
   <order>
     <hop>
-      <from>100m</from>
+      <from>10m</from>
       <to>id</to>
       <enabled>Y</enabled>
     </hop>
